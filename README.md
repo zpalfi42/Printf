@@ -13,6 +13,44 @@
 - [**Libft**](https://github.com/Zsolt42/Libft) **authorized**
 - **Mandatory conversions** : `%c` (for printing characters) `%s` (for printing strings) `%p` (for printing a "void *" as hexadecimal) `%d` (for printing numbers in base 10) `%i` (for printing integers in base 10) `%u` (for printing unsigned integers in base 10) `%x & %X` (for printing hexadecimal numbers in base 16, lowercase and uppercase) `%%` (for printing %)
 
+## 💣 Adding ft_Printf to your project 💣
+
+#### To add ft_Printf in your project you should add this lines on your Makefile:
+
+`LIBS_DIR	= libs`
+
+`LIBS			= $(LIBS_DIR)/ft_printf/libftprintf.a \`
+
+`LIBS_HEADERS	= -I $(LIBS_DIR)/ft_printf/include/ \`
+
+#### Add in your `CFLAGS` rule:
+
+`CFLAGS		= -Wall -Wextra -Werror -g $(LIB_HEADERS)`
+
+#### Add in your `$(NAME): $(OBJ)`:
+
+`$(NAME): $(OBJ) $(LIBS)`
+
+`⠀⠀⠀⠀⠀⠀⠀⠀@$(CC) $(OBJ) $(LIBS) -o $(NAME)`
+
+#### Add in your `%.o:%.c` rule:
+
+`@$(CC) -c $(CFLAGS) -o $@ $^`
+
+#### And last thing is to add a new rule:
+
+`$(LIBS_DIR)/ft_printf/libftprintf.a:`
+
+`⠀⠀⠀⠀⠀⠀⠀⠀@make -C $(LIBS_DIR)/ft_printf`
+
+#### If you want to include your own libraries too:
+
+`INC				= -I $("YOUR_INCLUDE_DIR") $(LIBS_HEADERS)`
+
+`CFLAGS		= -Wall -Wextra -Werror -g $(INC)`
+
+#### Anyway, I have some [`C templates`](https://github.com/Zsolt42/42_Cursus_zpalfi/tree/main/C_Templates) if you want to see more clearly how to do it 😄😄
+
 ## 💯 Mark 💯
 
 <p align="center">
